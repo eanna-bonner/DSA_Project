@@ -4,7 +4,6 @@
 using namespace std;
 
 int findMedian(int arr[]) {
-    
     int max_val = arr[0], min_val = arr[0], median;
 
     for (int i = 1; i < 3; i++) { // find max and min values
@@ -41,17 +40,14 @@ int med3(vector<int> vec) {
         }
     }
     // return the index of the median in the full vector based on the index gotten from the 3 length array
-    if (index == 0) 
-    {
+    if (index == 0) {
         return 0;
     }
-    else if (index == 1)
-    {
+    else if (index == 1) {
         return (vec.size()/2)-1;
     }
 
-    else if (index == 2)
-    {
+    else if (index == 2) {
         return (vec.size()-1);
     }
     
@@ -98,11 +94,5 @@ int main() {
     int finalPivotIndex = partition4(dataVec,pivotIndex);
     cout << "Final Pivot Index: " << finalPivotIndex << endl;
 
-    // cout << dataVec[pivotIndex];
-    // cout << endl;
-
-    for (int i; i<dataVec.size();i++) {
-        cout << dataVec[i] << " ";
-    }
     return 0;
 }
