@@ -54,7 +54,7 @@ int med3(vector<int> vec) {
     return 0;
 }
 
-int partition4(vector<int>& vec, int pivotIdx) {
+int partition(vector<int>& vec, int pivotIdx) {
     int pivot = vec[pivotIdx]; // set pivot value
     swap(vec[pivotIdx],vec[vec.size()-1]); // put pivot at the end
     int pivotPos = vec.size()-1; // keep track of pivot index
@@ -78,6 +78,25 @@ int partition4(vector<int>& vec, int pivotIdx) {
     return pivotPos; // return final pivot index
 }
 
+// function to check if the array has been correctly partitioned
+bool checkCorrect(vector<int>&vec,int pivotIdx) {
+    int pivot = vec[pivotIdx];
+
+    for (int i=0;i<pivotIdx;i++) {
+        if (vec[i]>pivot) {
+            return false;
+        }
+    }
+
+    for (int j = vec.size()-1;j>pivotIdx;j--) {
+        if (vec[j]<pivot){
+            return false;
+        }
+    }
+
+    return true;
+}
+
 int main() {
     // Create a vector to store the integers
     vector<int> dataVec;
@@ -89,10 +108,15 @@ int main() {
     }
 
     int pivotIndex = med3(dataVec);
-    cout << "Pivot: " << dataVec[pivotIndex] << endl;
+    cout << "pivot: " << dataVec[pivotIndex];
     
-    int finalPivotIndex = partition4(dataVec,pivotIndex);
-    cout << "Final Pivot Index: " << finalPivotIndex << endl;
+    int finalPivotIndex = partition(dataVec,pivotIndex);
+    cout << "; final index: " << finalPivotIndex << endl;
+
+    // function to check if the array has been correctly partitioned
+    // bool correct = checkCorrect(dataVec,finalPivotIndex);
+    // cout << std::boolalpha;
+    // cout << "All small elements to the left and large to the right? " << correct;
 
     return 0;
 }
